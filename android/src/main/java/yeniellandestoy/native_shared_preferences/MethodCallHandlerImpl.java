@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.Log;
 import io.flutter.plugin.common.MethodCall;
@@ -63,7 +64,7 @@ class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
       pref = context.getSharedPreferences(resourceName, Context.MODE_PRIVATE);
     } catch (IllegalArgumentException e) {
       Log.d("SharedPreferences:", "using default resource name");
-      pref = context.getDefaultSharedPreferences(context);
+      pref = PreferenceManager.getDefaultSharedPreferences(context);
     }
     preferences = pref;
     this.context = context;
