@@ -188,7 +188,9 @@ class NativeSharedPreferences {
     // Strip the flutter. prefix from the returned preferences.
     final Map<String, Object> preferencesMap = <String, Object>{};
     for (String key in fromSystem.keys) {
-      assert(key.startsWith(_prefix));
+      if (!key.startsWith(_prefix)) {
+        continue;
+      }
       preferencesMap[key.substring(_prefix.length)] = fromSystem[key]!;
     }
     return preferencesMap;
