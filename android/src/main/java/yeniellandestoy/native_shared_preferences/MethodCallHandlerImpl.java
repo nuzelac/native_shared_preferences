@@ -33,7 +33,7 @@ import java.util.Set;
 @SuppressWarnings("unchecked")
 class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
 
-  private static final String SHARED_PREFERENCES_NAME = "FlutterSharedPreferences";
+  // private static final String SHARED_PREFERENCES_NAME = "FlutterSharedPreferences";
 
   // Fun fact: The following is a base64 encoding of the string "This is the prefix for a list."
   private static final String LIST_IDENTIFIER = "VGhpcyBpcyB0aGUgcHJlZml4IGZvciBhIGxpc3Qu";
@@ -63,7 +63,7 @@ class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
       pref = context.getSharedPreferences(resourceName, Context.MODE_PRIVATE);
     } catch (IllegalArgumentException e) {
       Log.d("SharedPreferences:", "using default resource name");
-      pref = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+      pref = context.getDefaultSharedPreferences(context);
     }
     preferences = pref;
     this.context = context;
